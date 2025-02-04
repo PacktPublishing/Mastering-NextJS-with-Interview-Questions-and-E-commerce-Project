@@ -12,7 +12,7 @@
     "@prisma/client": "^5.17.0",
     "@tailwindcss/forms": "^0.5.7",
     "better-sqlite3": "^9.6.0",
-    "next": "14.1.3",
+    "next": "14.2.21",
     "prisma": "^5.17.0",
     "react": "^18",
     "react-dom": "^18"
