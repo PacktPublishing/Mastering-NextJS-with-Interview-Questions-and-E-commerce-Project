@@ -1,0 +1,54 @@
+"use client";
+
+import { SearchIcon, UserIcon, CartIcon } from "@/app/icons";
+import Link from "next/link";
+import { useState } from "react";
+
+const Header = ()=>{
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = ()=>{
+        setDropdownOpen(!dropdownOpen);
+    }
+
+    return(
+        <div className="navbar">
+            <div className="container">
+                <div className="flex justify-between items-center">
+                    <h1 className="text-3xl font-semibold">MyStore</h1>
+
+                    <div className="relative w-full max-w-lg">
+                        <SearchIcon className="absolute left-2 top-2 w-7 h-7"/>
+                        <input
+                            placeholder="Search Product..."
+                            className="custom-input pl-10"
+                        />
+                    </div>
+
+                    <div className="relative">
+                        <div className="flex gap-3">
+                            <CartIcon className="w-7 h-7"/>
+                            <button className="icon-button" onClick={toggleDropdown}>
+                                <UserIcon className="w-7 h-7"/>
+                            </button>
+                        </div>
+                        { 
+                            dropdownOpen &&
+                            <div className="dropdown-menu">
+                                <Link 
+                                    href="/"
+                                    className="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100"
+                                >My Wishlist</Link>
+                                <button
+                                    className="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100 w-full text-left"
+                                >Logout</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Header;

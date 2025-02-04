@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .sidebar-main{
+        @apply top-0 left-0 h-screen w-64 flex flex-col shadow-xl 
+            rounded-e-lg text-gray-800 sticky;
+    }
+    .sidebar-list-item{
+        @apply px-5 py-3 my-2 mx-auto w-full rounded-md hover:bg-blue-100 flex;
+    }
+    .sidebar-usercard{
+        @apply fixed bottom-0 w-60 my-4 m-2 rounded-2xl border-t-2 
+            border-gray-300 hover:bg-blue-100 hover:border-blue-200;
+    }
+    .custom-primary-btn{
+        @apply p-3 m-1 rounded-md bg-blue-500 text-gray-50 hover:bg-blue-200
+            hover:text-blue-900 hover:shadow-md;
+    }
+    .custom-table{
+        @apply overflow-y-auto w-11/12 mx-auto;
+    }
+    .custom-table th{
+        @apply p-3
+    }
+    .custom-table th,
+    .custom-table td{
+        @apply px-6 py-2 text-start;
+    }
+    .custom-table tr{
+        @apply border-b border-gray-300;
+    }
+    .custom-input{
+        @apply h-12 w-full border text-black rounded-md p-3 text-base 
+            placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-[2px]
+            focus-visible:ring-blue-400 disabled:cursor-not-allowed disabled:opacity-50
+            group-hover/input:shadow-none;
+    }
+    .custom-submit-btn{
+        @apply rounded font-medium text-white text-base lg:text-lg leading-5
+            lg:leading-6 bg-blue-700 hover:shadow-xl disabled:pointer-events-none
+            disabled:bg-gray-50 disabled:text-black/50 px-5 py-3;
+    }
+    .close-icon-button{
+        @apply text-gray-400 absolute top-2.5 right-2.5 bg-transparent rounded-lg text-base p-1.5
+            ml-auto inline-flex items-center hover:bg-gray-200 hover:text-gray-900;
+    }
+    .dashboard-card{
+        @apply border border-gray-200 rounded-xl shadow-md p-4 space-y-2;
+    }
+}

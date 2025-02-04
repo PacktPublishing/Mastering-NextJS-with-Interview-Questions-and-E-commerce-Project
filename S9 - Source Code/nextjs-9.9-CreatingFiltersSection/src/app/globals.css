@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  body{
+    @apply text-base text-black bg-gray-100;
+  }
+  .navbar{
+    @apply py-4 bg-white shadow-lg;
+  }
+  .container{
+    @apply mx-auto px-4;
+  }
+  .custom-input{
+    @apply h-12 w-full border text-black bg-gray-100 rounded-md p-3 text-base 
+      placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-[-2px]
+      focus-visible:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50
+      group-hover/input:shadow-none;
+  }
+
+  .dropdown-menu{
+    @apply absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg font-medium;
+  }
+  .icon-button{
+    @apply bg-transparent inline-flex items-center cursor-pointer;
+  }
+
+  .checkbox-button-label{
+    @apply inline-flex items-center text-sm text-gray-700 border border-gray-700 rounded-lg
+      px-3 py-2 cursor-pointer peer-checked:bg-blue-700 peer-checked:text-white
+      hover:text-gray-600 hover:bg-gray-100;
+  }
+}

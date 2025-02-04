@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser{
+  id Int @id @default(autoincrement())
+  userType String
+  userName String @unique
+  password String
+}
+
+model ProductType{
+  id       Int     @id @default(autoincrement())
+  name     String  @unique
+  products Product[]
+}
+
+model Product{
+  id Int @id @default(autoincrement())
+  name String
+  description String
+  mrp Float
+  sellPrice Float
+  image String
+  productTypeId Int 
+  currentStock Int 
+  rating Float? @default(0)
+  smallSize Int @default(0)
+  mediumSize Int @default(0)
+  largeSize Int @default(0)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  productType ProductType @relation(fields:[productTypeId], references: [id])
+}
+
+model BuyerMaster{
+  id Int @id @default(autoincrement())
+  customerName String 
+  email String @unique
+  password String 
+  address String?
+  city String?
+  createdAt DateTime @default(now())
+  sales SalesMaster[]
+}
+
+model SalesMaster{
+  id String @id @default(uuid())
+  bId Int
+  SODateTime DateTime
+  grandTotalPrice Float
+  paymentMode String
+  paymentDetails String?
+  buyer BuyerMaster @relation(fields: [bId], references: [id])
+  salesTransactions SalesTransaction[]
+}
+
+model SalesTransaction{
+  id String @id @default(uuid())
+  SMOId String
+  productId Int
+  productName String
+  unitPrice Float
+  qtyPurchased Int
+  total Float
+  salesMaster SalesMaster @relation(fields: [SMOId], references: [id])
+}
